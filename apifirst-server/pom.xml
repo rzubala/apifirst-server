@@ -9,6 +9,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <swagger.request.validator.version>2.39.0</swagger.request.validator.version>
+    </properties>
+
     <artifactId>apifirst-server</artifactId>
 
     <name>apifirst-server</name>
@@ -43,6 +47,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.atlassian.oai</groupId>
+            <artifactId>swagger-request-validator-spring-webmvc</artifactId>
+            <version>${swagger.request.validator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
