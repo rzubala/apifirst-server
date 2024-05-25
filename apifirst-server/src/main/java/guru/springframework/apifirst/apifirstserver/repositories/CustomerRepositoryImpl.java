@@ -37,6 +37,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                     .city(entity.getBillToAddress().getCity())
                     .state(entity.getBillToAddress().getState())
                     .zip(entity.getBillToAddress().getZip())
+                    .dateCreated(OffsetDateTime.now())
+                    .dateUpdated(OffsetDateTime.now())
                     .build());
         }
 
@@ -48,6 +50,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                     .city(entity.getShipToAddress().getCity())
                     .state(entity.getShipToAddress().getState())
                     .zip(entity.getShipToAddress().getZip())
+                    .dateCreated(OffsetDateTime.now())
+                    .dateUpdated(OffsetDateTime.now())
                     .build());
         }
 
@@ -59,6 +63,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                             .cardNumber(paymentMethod.getCardNumber())
                             .expiryMonth(paymentMethod.getExpiryMonth())
                             .expiryYear(paymentMethod.getExpiryYear())
+                            .dateCreated(OffsetDateTime.now())
+                            .dateUpdated(OffsetDateTime.now())
+                            .cvv(paymentMethod.getCvv())
+                            .displayName(paymentMethod.getDisplayName())
                             .build())
                     .collect(Collectors.toList()));
         }

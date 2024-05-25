@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 /**
@@ -41,8 +42,10 @@ public class DataLoader implements CommandLineRunner {
                 .phone("800-555-1212")
                 .paymentMethods(List.of(PaymentMethod.builder()
                         .cardNumber(12341234)
+                        .displayName("My card")
                         .expiryMonth(12)
                         .expiryYear(26)
+                        .cvv(123)
                         .build()))
                 .build();
 
@@ -64,8 +67,10 @@ public class DataLoader implements CommandLineRunner {
                 .phone("800-555-1212")
                 .paymentMethods(List.of(PaymentMethod.builder()
                         .cardNumber(1234888)
+                        .displayName("My card")
                         .expiryMonth(12)
                         .expiryYear(26)
+                        .cvv(123)
                         .build()))
                 .build();
 
