@@ -1,5 +1,6 @@
 package guru.springframework.apifirst.apifirstserver.controllers;
 
+import lombok.val;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest
 public class CustomerControllerTest extends BaseTest{
+
+    @DisplayName("Test get customer by id")
+    @Test
+    void testGetCustomerById() throws Exception {
+        mockMvc.perform(get(CustomerController.BASE_URL + "/{customerId}", testCustomer.getId())
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(testCustomer.getId().toString()));
+    }
 
     @DisplayName("Test list customers")
     @Test
