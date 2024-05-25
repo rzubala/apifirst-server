@@ -14,6 +14,9 @@ import java.util.UUID;
 
 import static guru.springframework.apifirst.apifirstserver.controllers.CustomerController.BASE_URL;
 
+/**
+ * Created by jt, Spring Framework Guru.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(BASE_URL)
@@ -24,12 +27,31 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping
-    public ResponseEntity<List<Customer>> listCustomers() {
+    public ResponseEntity<List<Customer>> listCustomers(){
         return ResponseEntity.ok(customerService.listCustomers());
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable("customerId") UUID customerId) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") UUID customerId) {
         return ResponseEntity.ok(customerService.getCustomerById(customerId));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
