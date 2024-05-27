@@ -1,7 +1,7 @@
 package guru.springframework.apifirst.apifirstserver.controllers;
 
 import guru.springframework.apifirst.model.Category;
-import guru.springframework.apifirst.model.Dimentions;
+import guru.springframework.apifirst.model.Dimensions;
 import guru.springframework.apifirst.model.Image;
 import guru.springframework.apifirst.model.Product;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ class ProductControllerTest extends BaseTest {
                         .url("http://example.com/image.jpg")
                         .altText("Image Alt Text")
                         .build()))
-                .dimentions(Dimentions.builder()
+                .dimensions(Dimensions.builder()
                         .length(10)
                         .width(10)
                         .height(10)
