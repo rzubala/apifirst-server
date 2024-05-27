@@ -27,7 +27,9 @@ public class OpenApiValidationConfig {
     @Bean
     public WebMvcConfigurer openAPIValidationInterceptor() {
 
-        OpenApiInteractionValidator validator = OpenApiInteractionValidator.createForSpecificationUrl("https://api.redocly.com/registry/bundle/spring-framework-guru/API%20First%20With%20Spring%20Boot%20-%20Development/v1/openapi.yaml?branch=development")
+        OpenApiInteractionValidator validator = OpenApiInteractionValidator.createForSpecificationUrl(
+                "https://api.redocly.com/registry/bundle/private-ds2/Api%20First%20With%20Spring%20Boot%20-%20Development/v1/openapi.yaml?branch=development"
+                )
                 .build();
 
         OpenApiValidationInterceptor interceptor = new OpenApiValidationInterceptor(validator);

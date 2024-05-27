@@ -61,7 +61,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>https://api.redocly.com/registry/bundle/spring-framework-guru/API%20First%20With%20Spring%20Boot%20-%20Development/v1/openapi.yaml?branch=development</inputSpec>
+<!--                            <inputSpec>https://api.redocly.com/registry/bundle/spring-framework-guru/API%20First%20With%20Spring%20Boot%20-%20Development/v1/openapi.yaml?branch=development</inputSpec>-->
+                            <inputSpec>https://api.redocly.com/registry/bundle/private-ds2/Api%20First%20With%20Spring%20Boot%20-%20Development/v1/openapi.yaml?branch=development</inputSpec>
                             <generatorName>java</generatorName>
                             <library>resttemplate</library>
                             <generateApiDocumentation>false</generateApiDocumentation>
