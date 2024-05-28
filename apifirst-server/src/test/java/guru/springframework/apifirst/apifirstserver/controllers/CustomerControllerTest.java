@@ -1,8 +1,10 @@
 package guru.springframework.apifirst.apifirstserver.controllers;
 
-import guru.springframework.apifirst.model.Address;
-import guru.springframework.apifirst.model.Customer;
-import guru.springframework.apifirst.model.Name;
+import guru.springframework.apifirst.model.AddressDto;
+import guru.springframework.apifirst.model.CategoryDto;
+import guru.springframework.apifirst.model.CustomerDto;
+import guru.springframework.apifirst.model.NameDto;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,34 +21,33 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 public class CustomerControllerTest extends BaseTest {
 
+    @DisplayName("Test Create Customer")
     @Test
-    void testCreateNewCustomer() throws Exception {
-        Customer newCustomer = Customer.builder()
-                .name(Name.builder()
-                        .firstName("New")
-                        .lastName("Customer")
+    void testCreateCustomer() throws Exception {
+        CustomerDto customer = CustomerDto.builder()
+                .name(NameDto.builder()
+                        .lastName("Doe")
+                        .firstName("John")
                         .build())
-                .shipToAddress(
-                        Address.builder()
-                            .addressLine1("Test street 1")
-                            .city("City")
-                            .state("PL")
-                            .zip("000000")
-                            .build()
-                )
-                .billToAddress(
-                        Address.builder()
-                                .addressLine1("Test street 1")
-                                .city("City")
-                                .state("PL")
-                                .zip("000000")
-                                .build()
-                )
+                .phone("555-555-5555")
+                .email("john@example.com")
+                .shipToAddress(AddressDto.builder()
+                        .addressLine1("123 Main St")
+                        .city("Denver")
+                        .state("CO")
+                        .zip("80216")
+                        .build())
+                .billToAddress(AddressDto.builder()
+                        .addressLine1("123 Main St")
+                        .city("Denver")
+                        .state("CO")
+                        .zip("80216")
+                        .build())
                 .build();
 
         mockMvc.perform(post(CustomerController.BASE_URL)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(newCustomer)))
+                        .content(objectMapper.writeValueAsString(customer)))
                 .andExpect(status().isCreated())
                 .andExpect(header().exists("Location"));
     }
