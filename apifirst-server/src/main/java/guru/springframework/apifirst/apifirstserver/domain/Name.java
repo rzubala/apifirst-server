@@ -12,7 +12,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Embeddable
 public class Name {
     private String prefix;
     private String firstName;

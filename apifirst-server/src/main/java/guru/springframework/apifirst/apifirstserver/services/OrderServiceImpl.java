@@ -25,6 +25,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto saveNewOrder(OrderCreateDto orderCreate) {
+        /*
         CustomerDto orderCustomer = customerRepository.findById(orderCreate.getCustomerId()).orElseThrow();
 
         OrderDto.OrderDtoBuilder builder = OrderDto.builder()
@@ -58,16 +59,20 @@ public class OrderServiceImpl implements OrderService {
                 });
 
         return orderRepository.save(builder.orderLines(orderLines).build());
+
+         */
+        return null;
     }
 
     @Override
     public List<OrderDto> listOrders() {
-        return StreamSupport.stream(orderRepository.findAll().spliterator(), false)
-                .toList();
+        // return StreamSupport.stream(orderRepository.findAll().spliterator(), false).toList();
+        return null;
     }
 
     @Override
     public OrderDto getOrderById(UUID orderId) {
-        return orderRepository.findById(orderId).orElseThrow();
+        // return orderRepository.findById(orderId).orElseThrow();
+        return null;
     }
 }

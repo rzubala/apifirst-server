@@ -35,7 +35,7 @@ public class Product {
     @Embedded
     private Dimension dimensions;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany
     private List<Category> categories;
 
     @OneToMany(mappedBy = "product")

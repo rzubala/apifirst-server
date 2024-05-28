@@ -24,14 +24,21 @@ public class Customer {
     @Column(length = 36, columnDefinition = "char(36)", updatable = false, nullable = false)
     private UUID id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address shipToAddress;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address billToAddress;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<PaymentMethod> paymentMethods;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.paymentMethods != null && !this.paymentMethods.isEmpty()) {
+            this.paymentMethods.forEach(paymentMethod -> paymentMethod.setCustomer(this));
+        }
+    }
 
     @Embedded
     private Name name;
