@@ -1,5 +1,6 @@
 package guru.springframework.apifirst.apifirstserver.services;
 
+import guru.springframework.apifirst.apifirstserver.mappers.ProductMapper;
 import guru.springframework.apifirst.apifirstserver.repositories.ProductRepository;
 import guru.springframework.apifirst.model.ProductCreateDto;
 import guru.springframework.apifirst.model.ProductDto;
@@ -19,21 +20,22 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
+    private final ProductMapper productMapper;
+
     @Override
     public ProductDto saveNewProduct(ProductCreateDto product) {
-        // return productRepository.save(product);
-        return null;
+        return productMapper.productToDto(productRepository.save(productMapper.dtoToProduct(product)));
     }
 
     @Override
     public List<ProductDto> listProducts() {
-        // return StreamSupport.stream(productRepository.findAll().spliterator(), false).toList();
-        return null;
+        return StreamSupport.stream(productRepository.findAll().spliterator(), false)
+                .map(productMapper::productToDto)
+                .toList();
     }
 
     @Override
     public ProductDto getProductById(UUID productId) {
-        // return productRepository.findById(productId).orElseThrow();
-        return null;
+        return productMapper.productToDto(productRepository.findById(productId).orElseThrow());
     }
 }

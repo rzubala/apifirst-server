@@ -1,9 +1,6 @@
 package guru.springframework.apifirst.apifirstserver.controllers;
 
-import guru.springframework.apifirst.model.CategoryDto;
-import guru.springframework.apifirst.model.DimensionsDto;
-import guru.springframework.apifirst.model.ImageDto;
-import guru.springframework.apifirst.model.ProductDto;
+import guru.springframework.apifirst.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -22,14 +19,11 @@ class ProductControllerTest extends BaseTest {
 
     @Test
     void testCreateProduct() throws Exception {
-        ProductDto newProduct = ProductDto.builder()
+        ProductCreateDto newProduct = ProductCreateDto.builder()
                 .description("New Product")
                 .cost("5.00")
                 .price("8.95")
-                .categories(Arrays.asList(CategoryDto.builder()
-                        .category("New Category")
-                        .description("New Category Description")
-                        .build()))
+                .categories(Arrays.asList("ELECTRONICS"))
                 .images(Arrays.asList(ImageDto.builder()
                         .url("http://example.com/image.jpg")
                         .altText("Image Alt Text")
