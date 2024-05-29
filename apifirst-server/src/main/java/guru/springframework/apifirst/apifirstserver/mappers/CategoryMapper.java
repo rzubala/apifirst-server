@@ -5,11 +5,13 @@ import guru.springframework.apifirst.model.CategoryDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+/**
+ * Created by jt, Spring Framework Guru.
+ */
 @Mapper
 public interface CategoryMapper {
     CategoryDto categoryToDto(Category category);
 
-    @Mapping(target = "dateCreated", ignore = true)
-    @Mapping(target = "dateUpdated", ignore = true)
-    Category dtoToCategory(CategoryDto dto);
+    @Mapping(target = "products", ignore = true)
+    Category dtoToCategory(CategoryDto categoryDto);
 }

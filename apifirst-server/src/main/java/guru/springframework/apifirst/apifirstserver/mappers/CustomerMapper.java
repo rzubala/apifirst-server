@@ -5,8 +5,12 @@ import guru.springframework.apifirst.model.CustomerDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+/**
+ * Created by jt, Spring Framework Guru.
+ */
 @Mapper
 public interface CustomerMapper {
+
     CustomerDto customerToDto(Customer customer);
 
     @Mapping(target = "dateCreated", ignore = true)
