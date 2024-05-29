@@ -29,6 +29,8 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private List<Product> products;
 
+    private String categoryCode;
+
     @CreationTimestamp
     private OffsetDateTime dateCreated;
     @UpdateTimestamp
