@@ -1,6 +1,8 @@
 package guru.springframework.apifirst.apifirstserver.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -22,10 +24,16 @@ public class PaymentMethod {
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(length = 36, columnDefinition = "char(36)", updatable = false, nullable = false)
     private UUID id;
+    @NotNull
+    @Size(min=2,max=100)
     private String displayName;
+    @NotNull
     private Integer cardNumber;
+    @NotNull
     private Integer expiryMonth;
+    @NotNull
     private Integer expiryYear;
+    @NotNull
     private Integer cvv;
     @ManyToOne
     private Customer customer;
